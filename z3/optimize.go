@@ -243,7 +243,7 @@ func (o *Optimize) Minimize(val Value) *Objective {
 func (o *Optimize) Check() (sat bool, err error) {
 	var res C.Z3_lbool
 	o.ctx.do(func() {
-		res = C.Z3_optimize_check(o.ctx.c, o.o, 0, 0)
+		res = C.Z3_optimize_check(o.ctx.c, o.o, 0, nil)
 	})
 	if res == C.Z3_L_UNDEF {
 		// Get the reason
